@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Iniciante</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+
+        // sem o fragment buga tudo porque precisa de ter um container em volta dos elementos JSX
+        const App = () => {
+            return (
+                <React.Fragment>
+                    <h1> Teste </h1>
+                    <ButtonJSX />
+                    <h3> Teste 2</h3>
+                    <ButtonJSX />
+                    <Titulo />
+                    <NumeroAleatorio />
+                    <Contador />
+                </React.Fragment >
+            )
+        }
+
+        const NumeroAleatorio = () => {
+            var randomNumber = Math.random();
+            return (
+                <p> Este foi o número aleatorio gerado pelo sistema: {randomNumber}</p>
+            )
+        }
+
+        const Titulo = () => {
+
+            return (
+                <h1>Titulo da arrow function</h1>
+            )
+        }
+
+        const ButtonJSX = () => {
+            function handleClick(event) {
+                alert(event.target.innerText)
+            }
+            return (
+                <button onClick={handleClick}> Button do teste</button>
+            )
+        }
+
+        const Contador = () => {
+            const [clicks, setClicks] = React.useState(0);
+            return (
+                <React.Fragment>
+                    <button onClick={() => setClicks(clicks + 1)}> Clique aqui para aumentar o total de cliques !</button>
+                    <p>Total de cliques: {clicks} </p>
+                </React.Fragment>
+            )
+        }
+
+        class Button extends React.Component {
+            render() {
+                return (
+                    <div> Sla mano wtf</div>
+                )
+            }
+        }
+
+        ReactDOM.render(<App />, document.getElementById("app"))
+    </script>
+
+</body>
+
+</html>
